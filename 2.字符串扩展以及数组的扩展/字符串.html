@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+   
+  <div id="div"></div>
+    <script>
+	   /*
+	      字符串的扩展
+		   模板字符串(增强字符串)
+		   标签模板
+
+		  传统字符串
+		 var str = 'left \n is \n shit';//换行
+	     console.log(str);
+
+		 var str = 'left \
+		   is \
+		   shit'
+		   console.log(str);//代码是换行的，单输出还是不换行，如右：left 	   is 	   shit
+
+		 
+		 模板字符串(换行)
+         var str = `life   //实现了真正的换行，保留字符串的书写格式  
+		   is
+		   shit`;
+		   console.log(str);
+
+		  var str = `
+          <div>
+		     <p></p>
+		   </div>
+	    ` 
+		  
+		  字符串添加变量(或表达式)
+		     添加变量
+		   var arr = {
+		   name : 'lihui',
+		   age : 18,
+		   man : 'fs'
+		   }
+		   let {name,man,age} = arr;
+		   var str = 'name:' + name + 'age:' + age + 'man:' + man;//传统字符串拼接变量
+		   console.log(str);
+		   var newStr = `name:${name},age:${age},man:${man}`;//模板字符串添加变量
+		   console.log(str);
+		      添加表达式
+           let [x,y] = [4,5];
+		   var str = `${x} + ${y} = ${x+y}`;
+		   console.log(str);//4+5=9
+
+           var str = `${false} + 1`;//$(false)或${1}传进来的是常量，那么就会转换成字符串
+           console.log(str);
+
+		       添加函数
+		   function test(){
+		     return 'lihui'
+		   }
+		   var str = `my name is ${test()}`;
+		   console.log(str);//my name is lihui 
+		     
+			    嵌套
+		  var str = `${[1,3,6,7,1].map(function (self,index){
+		   return `${self}:${index}`;
+		   })}`//输出"1:0,3:1,6:2,7:3,1:4"
+
+
+		    
+			  
+			     标签模板
+		   标签模板实质---函数调用的特殊形式(标签指的是函数，紧跟后面的模板字符串就是参数)
+		   重要应用---过滤HTML字符串，防止xss攻击，防止注入js代码，过滤输入框输入js代码，
+            
+		     alert`123`;//弹出窗口，123
+			 function test(name){
+			   console.log(name);
+		    }
+		     test`lihui`;//打印一个数组[0:'lihui',.....]  
+		 
+		   var name = 'xiaoming',
+	        where = 'BJ';
+			function show(){
+				console.log(arguments);
+			}
+			show`hello ${name},welcome to ${where}`;//[["hello ", ",welcome to ", "", raw: Array(3)],"xiaoming","BJ"]
+
+
+		   防注入js代码
+		  
+		   var name = "<script>alert(888)<\/script>";
+		   function clear(){
+				if(arguments[1].indexOf('<script>') !=-1){
+					alert('滚');
+				}
+		   }
+		   clear`<p>${name}</p>`
+
+		   过滤html
+				  
+	   */
+	  
+	  var name = '<script>alert(888)<\/script>'
+	  function safeHTML(data){
+		  var str = data[0];
+		  console.log(data);
+		  console.log(arguments);
+		  for(let i = 1;i < arguments.length;i++){
+			  var arg = String(arguments[i]);
+			  str += arg.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/</g,'&gt');
+			  str += data[i];
+		  }
+          console.log(str);
+	  }
+
+     safeHTML`<p>${name} welcome to duyi!!!</p>`	   
+
+
+	  
+	  
+	   
+	 
+      
+	   
+	  
+	   
+	</script>
+ </body>
+</html>

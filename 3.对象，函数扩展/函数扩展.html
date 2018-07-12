@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+    <div>1</div>
+    <div>2</div>
+	<div>3</div>
+    <div>4</div>
+    <div>5</div>
+	<div>6</div>
+
+    <script>
+    
+
+	 
+	//    var arr = [];
+	//	var arr1 = [1,2,3,4,5];
+	//	Array.prototype.push.apply(arr,arr1);
+	//	console.log(arr);[1,2,3,4,5]
+
+
+	// var arr = [];
+	// var arr1 = [1,2,3,4,5]
+	// console.log(arr.concat(arr1));//[1,2,3,4,5];
+
+
+//   var arr = [];
+//	   var arr1 = [1,2,3,4,5];
+//	   arr.push(...arr1);
+//	   console.log(arr);//[1,2,3,4,5]
+
+//    var arr = [1,2,4];
+//	var arr1 = [false,true];
+//	var arr2 = ['fsfs','fsf'];
+//	var newArr = [...arr,...arr1,...arr2];
+//	console.log(newArr);// [1, 2, 4, false, true, "fsfs", "fsf"]
+
+         
+		  //匹配模式
+  //   var [x,...y] = [1,2,3,4,5]; // 等价于 var [x,...y] = [1,...[2,3,4,5]]
+//	 console.log(x,y);1,[2,3,4,5]
+
+//    var [x,...y] = [1];
+//	console.log(x,y);//1，[],其他都是undefined，这个是空数组
+
+
+          //字符串
+  // var str = [...'xiaomingtongxuehao'];//包装类  类数组转换成数组
+//	console.log(str);// ["x", "i", "a", "o", "m", "i", "n", "g", "t", "o", "n", "g", "x", "u", "e", "h", "a", "o"]
+
+
+         //数组的扩展   Array.from(把类数组转换成数组) Array.of()
+
+    
+//	var str = 'faskflsdfasd';
+//	var arr = Array.from(str); //通过包装类隐式转换，成类数组，
+//	console.log(arr);//["f", "a", "s", "k", "f", "l", "s", "d", "f", "a", "s", "d"]
+
+
+        //Array.from(obj,callback)//写了callback，将会遍历obj
+	
+/*	var obj = {
+		0 : 'd',
+		1 : 'c',
+		2 : 'b',
+		length : 3
+	}
+   var arr = Array.from(obj,function (self,index){
+	       return self + index;
+   })
+   console.log(arr);//["d0", "c1", "b2"]
+
+   var arr1 = Array.from(obj).map(function (self,index){
+	   return self + index;
+   })
+   console.log(arr);//["d0", "c1", "b2"]  */
+
+    //     节点列表的处理
+ //  var divs = document.getElementsByTagName('div');
+ //  var text = Array.from(divs,(self,index) => self.innerHTML);
+ //  console.log(text);//(6) ["1", "2", "3", "4", "5", "6"]
+   
+	   //传参为数组，将返回一个克隆的数组
+
+ //    var arr = [1,2,3,4,5,6];
+//	 var arr1 = Array.from(arr,self=>self);
+//	 console.log(arr === arr1);//false
+
+       
+	   //arguments ...arg  Array.from 组合	     
+  //var fn = (...arg) => {	
+//	  var arr = Array.from(arg,(self)=> typeof(self));
+//	  console.log(arr);// ["string", "number", "boolean", "object", "undefined", "object", "object"]
+	
+  //}
+  //fn('1',1,false,null,undefined,[],{});
+
+
+                  //Array.of  将数转换成数组,取代了new Array不足的地方 new Array(5)
+		//    var arr = Array.of(1,2,3,4,5);
+	  //		console.log(arr);//[1, 2, 3, 4, 5]
+
+	               //和 new Array(1,2,3,4,5)差不多
+	 
+	   // var arr = new Array(1,2,3,4,5);
+	    ///console.log(arr);//[1, 2, 3, 4, 5]
+
+
+		          //但如果new 的话前面只有一个数，则是长度
+	// var arr = new Array(12);
+	//	 console.log(arr);//[empty × 12]
+     
+
+	             //返回一个数组 Array.from()
+ /*   var fn = (...arg) => Array.from(arg)
+	   var arr =  fn(1,2,3,4,5);
+	   console.log(arr);// [1, 2, 3, 4, 5]
+
+
+	            //返回一个数组 Array.of
+	  var fn1 = (...arg) => Array.of(...arg);
+	  console.log(fn1(1,2,4,5,65));// [1, 2, 4, 5, 65] 
+	          
+			
+              //es3返回一个数组
+	  var fn2 = (...arg) => Array.prototype.slice.call(arg);
+	  console.log(fn2(1,2,3,4,5))//[1, 2, 3, 4, 5]
+    */
+
+	         //数组实例的方法copyWithin()
+    // Arrry.prototype.copyWithin(target,start=0,end=this.length)
+   //  var arr = [1,2,3,4,5,6];
+	 // arr.copyWithin(0,3);//[4, 5, 6, 4, 5, 6]
+ //    arr.copyWithin(0,-3)//[4, 5, 6, 4, 5, 6]
+
+            //数组实例的方法fill() entries() keys() values()
+
+                 //fill(),数组空内容填充，
+//	   var arr = new Array(10);
+//	   console.log(arr.fill(2));//[2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+
+                  //fill参数
+	//   var arr = new Array(8);
+	//   console.log(arr.fill(4,2,3));//从第二填充到第三 
+
+
+	            //entries()-->key和values的组合   keys()下标   values()值
+	/*	var arr = ['a',2,3,4,5];
+		for(self of arr.keys()){//keys()
+			console.log(self);//0 1 2 3 4
+		}
+         
+	    for(self of arr.values()){
+			console.log(self);//a 2 3 4 5
+		}
+		for([self,index] of arr.entries()){
+			console.log(self,index); //0 a 1 2 ........key value
+		}
+		
+		var a =arr.values();
+		console.log(a.next().value);//a   */
+
+
+		     //数组实例的方法includes() find() findIndex()
+			       //find()找到符合条件的数组第一个数
+
+			var arr = [1,2,3,4,5,NaN];
+			console.log(arr.find(self => self>3));//4，值  find(没满足条件返回undefined)和findIndex(没满足条件返回-1)   includes和indexOf
+			console.log(arr.findIndex(self => self>3))//3，下标
+			console.log(arr.includes(NaN));//true  和indexOf差别在NaN和返回boolean值
+			console.log(arr.indexOf(NaN));//-1 通过两个值比较，NaN 不等于NaN
+	</script>
+ </body>
+</html>

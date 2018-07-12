@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+    <script>
+	   /*
+	                函数传统默认值
+		 function Person(name,age){
+		   if(typeof(age) === 'undefined'){
+			   age = 18;
+		   }
+		// var age = age || 18;//写成这样，0，null，false都取18
+		   var age = age;//加上上面if输出：18 12 0 null false
+		   console.log(name,age)
+	   }
+	   Person('xm')//18
+	   Person('xm',12)//12
+	   Person('xm',0)//18
+	   Person('xm',null)//18
+       Person('xm',false)//18
+       
+	                es6默认值(只要不是undefined，都传什么是什么)
+	   function Person(name,age=18){
+		   console.log(age);
+	   }
+	   Person('xm',undefined)//18
+	   Person('xm')//18
+	   Person('xm',12)//12
+	   Person('xm',0)//0
+	   Person('xm',null)//null
+       Person('xm',false)//false
+
+	       
+			 与解构赋值使用
+	   //f1有默认值，f2有解构赋值
+	   function f1({x=0,y=0}={}){
+              console.log(x,y);
+	   }
+	   function f2({x,y}={x:0,y:0}){
+		   console.log(x,y);
+	   }
+	   f1();//0 0，取默认值
+	   f2();//0 0，先解构赋值，x=0，y=0，便有了默认值
+	   f1({x:1,y:2});//1,2， 有实参，便不会取默认值
+	   f2({x:1,y:2});//1,2，先解构赋值，便有了默认值，有实参，便不会取默认值
+	   f1({x:1});//1,0，x有实参，取实参，y没实参取默认值0
+	   f2({x:1});//1,undefined   形参先解构赋值，x=0；y=0，f2({x:1})执行,y不传为undefined，x=1，y=undefined
+          
+		    
+			  参数作用域 以及注意事项
+	    function fn(x){
+		   let x = 10;//当形参和该函数作用域内的let重复是不行的,let
+	   }
+	   fn();//报错 SyntaxError: Identifier 'x' has already been declared
+
+
+
+       function fn(x,x,y=4){//如果不有默认值，是不会报错的，有默认等于let y=4，es6不允许重复声明
+		   console.log(x)
+	   } 
+	   fn(4)// SyntaxError: Duplicate parameter name not allowed in this context
+	   
+
+	   let x = 10;
+	   function fn(y=x){
+		   console.log(y);//10
+	   }
+	   fn();
+
+
+	  eg:
+	   let x = 10;
+	   function fn(y=x){
+		   let x = 10;
+		   console.log(y,x);//10 10
+	   }
+	   fn();
+   
+      eg
+	   function fn(y=x){//x is not defined
+		   let x = 10;
+		   console.log(y,x);
+	   }
+	   fn();
+	  
+
+	  eg:
+	   function fn(x=x){//x is not defined  相当于 let x = x 不能声明之前使用
+		  
+	   }
+	   fn();
+
+
+	           
+			  
+			 REST参数(扩展运算符(...arg))
+	
+	eg:
+	   function test(...arg){
+		   console.log(arguments);//[1,2,3,4,5]
+		   console.log(...arg);  // 1 2 3 4 5  相当于家里...把[]拆掉了
+		   console.log(arg)//[1,2,3,4,5]
+	   }
+	   test(1,2,3,4,5)
+
+    
+	eg：
+
+	  var arr = [1,2,3,4,5];
+	  fn.call(null,...arr);//[1, 2, 3, 4, 5]
+	  fn.apply(null,[1,2,3,4,5])//[1, 2, 3, 4, 5]
+	  function fn(...args){
+			console.log(args);
+	 }
+		 
+	     
+		        箭头函数--》流向(没有arguments,通过...REST参数。没有this这个对象，依次找到它的父级，没有谁调用就是谁的说法)
+
+
+				单行代码
+	                                          形参   return
+	  var f = function (num){    和    var f = num => num 等价
+		   return num;
+	  }
+
+                 没有参数
+                                               ()形参没有参数
+	  var f = function (){    和    var f = () => num 等价
+		   return num;
+	  }
+
+
+	             多个参数
+	  var f = function (num1,num2){    和    var f = (num1,num2) => num1 + num2 等价
+		   return num1+num2;
+	  }
+
+	             
+				 返回对象
+	  var f = () => ({name:123})//因为单单{}是多行代码的写法，所以要加()
+
+
+	             
+				 多行代码
+	  var fn = num =>{
+		  console.log(this);//以前函数执行时window，箭头函数中没有this这个对象，依次找到它的父级
+		  num = num+1;
+		  return num * 5;
+	  }
+
+	  var age = "window 18"
+	  var obj = {
+		  age : 18,
+		  get : () => this.age
+	  }
+	
+      obj.get();//window 18
+
+	   
+	            
+				
+				嵌套箭头函数
+				   传统
+		 function fn(str){
+		  return function (){
+			  return str.split('')
+		  }
+		 }
+		 fn('123')()
+		          
+				
+				 箭头函数(和上面传统等价)
+		var fn1 = str => () => console.log(str.split(''))
+	    fn1('123')()
+	   */ 
+	  
+	   
+
+	</script>
+ </body>
+</html>
